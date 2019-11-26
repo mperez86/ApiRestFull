@@ -50,12 +50,14 @@ public class NoteService {
 	}
 	
 	public boolean delete(long id) {
-
+		logger.info("Elimnando una nota. Id: " + id);
 		try {
 			Note note = repo.findById(id);
 			repo.delete(note);
+			logger.warn("Nota eliminada");
 			return true;
 		}catch(Exception e) {
+			logger.error("Error al eliminar una nota con el id " + id);
 			return false;
 		}
 	}
